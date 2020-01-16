@@ -6,18 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1281</width>
+    <width>1280</width>
     <height>720</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1281</width>
+    <width>1280</width>
     <height>720</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="arrow.png">
+    <normaloff>.</normaloff>.</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -28,15 +32,15 @@
    <widget class="QProgressBar" name="downloading">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>740</x>
       <y>670</y>
-      <width>531</width>
-      <height>16</height>
+      <width>435</width>
+      <height>7</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QProgressBar{
-border:1px solid #FFFFFF;
+border:transparent;
 background:#4A5256;
 text-align: center;
 }
@@ -46,8 +50,11 @@ QProgressBar::chunk {
     width: 20px;
 }</string>
     </property>
+    <property name="maximum">
+     <number>0</number>
+    </property>
     <property name="value">
-     <number>24</number>
+     <number>0</number>
     </property>
    </widget>
    <widget class="QComboBox" name="area">
@@ -57,7 +64,7 @@ QProgressBar::chunk {
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>190</y>
+      <y>250</y>
       <width>264</width>
       <height>32</height>
      </rect>
@@ -108,20 +115,20 @@ min-height:100px;
     </property>
     <item>
      <property name="text">
-      <string>1</string>
+      <string notr="true">2</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>2</string>
+      <string>1</string>
      </property>
     </item>
    </widget>
    <widget class="QPushButton" name="login">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>360</y>
+      <x>150</x>
+      <y>490</y>
       <width>63</width>
       <height>63</height>
      </rect>
@@ -355,13 +362,13 @@ QPushButton#login::pressed{
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="close">
+   <widget class="QPushButton" name="close_button">
     <property name="geometry">
      <rect>
-      <x>1220</x>
-      <y>0</y>
-      <width>61</width>
-      <height>41</height>
+      <x>1230</x>
+      <y>-10</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -381,7 +388,7 @@ background:  transparent;
 
 QPushButton::hover{
 color:white;
-background:  rgba(222,222,222,0.2); 
+background:  rgb(209,54,57); 
 }</string>
     </property>
     <property name="text">
@@ -391,10 +398,10 @@ background:  rgba(222,222,222,0.2);
    <widget class="QPushButton" name="mini">
     <property name="geometry">
      <rect>
-      <x>1160</x>
-      <y>0</y>
-      <width>61</width>
-      <height>41</height>
+      <x>1180</x>
+      <y>-10</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -421,31 +428,11 @@ background:  rgba(222,222,222,0.2);
      <string>-</string>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="background">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>0</y>
-      <width>891</width>
-      <height>721</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QGraphicsView" name="icon">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>20</y>
-      <width>131</width>
-      <height>111</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>240</y>
+      <y>320</y>
       <width>264</width>
       <height>32</height>
      </rect>
@@ -461,20 +448,142 @@ QTextBrowser::hover{
 }</string>
     </property>
    </widget>
+   <widget class="QLabel" name="server">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>221</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Server</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="username">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>291</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>username?</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="login_text">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>120</y>
+      <width>101</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+      <pointsize>28</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+color:#33334B;
+}</string>
+    </property>
+    <property name="text">
+     <string>Login</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="login_frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>400</width>
+      <height>720</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame{
+background:white;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="back">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>1280</width>
+      <height>720</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>1280</width>
+      <height>720</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:transparent;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="login.qrc">:/img/ss2020.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>back</zorder>
+   <zorder>downloading</zorder>
+   <zorder>mini</zorder>
+   <zorder>close_button</zorder>
+   <zorder>login_frame</zorder>
+   <zorder>server</zorder>
+   <zorder>textBrowser</zorder>
    <zorder>area</zorder>
    <zorder>login</zorder>
-   <zorder>background</zorder>
-   <zorder>downloading</zorder>
-   <zorder>icon</zorder>
-   <zorder>textBrowser</zorder>
-   <zorder>mini</zorder>
-   <zorder>close</zorder>
+   <zorder>username</zorder>
+   <zorder>login_text</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="login.qrc"/>
+ </resources>
  <connections>
   <connection>
-   <sender>close</sender>
+   <sender>close_button</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>close()</slot>
