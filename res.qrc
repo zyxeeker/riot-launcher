@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="img">
+        <file>resource/_login.svg</file>
+        <file>resource/close.svg</file>
+        <file>resource/login.svg</file>
+        <file>resource/minimize.svg</file>
+    </qresource>
+</RCC>

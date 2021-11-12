@@ -1,9 +1,0 @@
-<RCC>
-  <qresource prefix="img">
-    <file>loading.png</file>
-    <file>global.png</file>
-    <file>loading.jpg</file>
-    <file>ss2020.jpg</file>
-    <file>arrow.png</file>
-  </qresource>
-</RCC>
