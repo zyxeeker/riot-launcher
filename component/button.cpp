@@ -19,12 +19,12 @@ Button::Button(QWidget *parent) : QPushButton(parent) {
     m_hoverAnimation->setEasingCurve(QEasingCurve::OutQuad);
     m_hoverAnimation->setDuration(220);
 
-    m_startAnimation->setStartValue(m_gb);
-    m_startAnimation->setEndValue(70);
-    m_startAnimation->start();
-    m_startAnimation1->setStartValue(m_alpha);
-    m_startAnimation1->setEndValue(0);
-    m_startAnimation1->start();
+//    m_startAnimation->setStartValue(m_gb);
+//    m_startAnimation->setEndValue(70);
+//    m_startAnimation->start();
+//    m_startAnimation1->setStartValue(m_alpha);
+//    m_startAnimation1->setEndValue(0);
+//    m_startAnimation1->start();
 
     this->setMinimumSize(60, 60);
     this->setMaximumSize(60, 60);
@@ -34,19 +34,19 @@ void Button::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
 
-    QColor bkColor(255, 255, 255, m_alpha);
+    QColor bkColor(249, 249, 249, m_alpha);
     QColor borderColor;
     borderColor = QColor(m_r, m_gb, m_gb);
 
     painter.setPen(Qt::NoPen);
     painter.setBrush(QBrush(borderColor));
-    painter.drawRoundedRect(QRect(0, 0, 60, 60), 16, 16);
+    painter.drawRoundedRect(QRect(0, 0, 56, 56), 16, 16);
 
     painter.setPen(Qt::NoPen);
     painter.setBrush(QBrush(bkColor));
-    painter.drawRoundedRect(QRect(3, 3, 54, 54), 14, 14);
+    painter.drawRoundedRect(QRect(2, 2, 52, 52), 14, 14);
 
-    painter.drawPixmap(18, 18, m_icon);
+    painter.drawPixmap(17, 17, m_icon);
 }
 
 void Button::enterEvent(QEvent *event) {

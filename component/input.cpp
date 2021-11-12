@@ -15,18 +15,18 @@ Input::Input(QWidget *parent) : QWidget(parent) {
 }
 
 void Input::Init() {
-    this->setMinimumSize(291, 50);
-    this->setMaximumSize(291, 50);
+    this->setMinimumSize(240, 40);
+    this->setMaximumSize(240, 40);
     QFont font1;
-    font1.setPointSize(12);
+    font1.setPointSize(6);
     font1.setBold(true);
-    m_label->setGeometry(15, 15, 100, 18);
+    m_label->setGeometry(11, 15, 100, 10);
     m_label->setFont(font1);
-    m_label->setText("username");
+    m_label->setText(QString::fromUtf8("帐号"));
     m_label->setStyleSheet("color:rgb(155,155,155);background-color: transparent;border:none;");
     QFont font;
-    font.setPointSize(15);
-    m_lineEdit->setGeometry(6, 17, 276, 25);
+    font.setPointSize(10);
+    m_lineEdit->setGeometry(6, 15, 240, 18);
     m_lineEdit->setFont(font);
     m_lineEdit->setStyleSheet("background-color: transparent;border:none;");
     m_lineEdit->setEnabled(false);
@@ -54,11 +54,11 @@ void Input::paintEvent(QPaintEvent *event) {
 
     painter.setPen(Qt::NoPen);
     painter.setBrush(QBrush(borderColor));
-    painter.drawRoundedRect(QRect(0, 0, 291, 50), 4, 4);
+    painter.drawRoundedRect(QRect(0, 0, 240, 40), 4, 4);
 
     painter.setPen(Qt::NoPen);
     painter.setBrush(QBrush(bkColor));
-    painter.drawRoundedRect(QRect(3, 3, 285, 44), 2, 2);
+    painter.drawRoundedRect(QRect(2, 2, 236, 36), 2, 2);
 }
 
 void Input::mousePressEvent(QMouseEvent *event) {
@@ -66,9 +66,9 @@ void Input::mousePressEvent(QMouseEvent *event) {
         m_lineEdit->setEnabled(true);
         m_lineEdit->setFocus();
         m_labelPos->setStartValue(m_label->geometry());
-        m_labelPos->setEndValue(QRect(7, 3, 100, 18));
+        m_labelPos->setEndValue(QRect(7, 5, 100, 10));
         m_bk->setStartValue(m_bkRGB);
-        m_bk->setEndValue(255);
+        m_bk->setEndValue(249);
         m_bkBorder->setStartValue(m_borderRGB);
         m_bkBorder->setEndValue(50);
         m_labelPos->start();

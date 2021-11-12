@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "component/input.h"
+#include "component/button.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,5 +20,6 @@ private:
     Ui::MainWindow *ui;
     Input *m_user;
     Input *m_pwd;
+    Button *m_loginBtn;
 };
 #endif // MAINWINDOW_H

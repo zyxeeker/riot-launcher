@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     m_user = new Input(this);
     m_pwd = new Input(this);
+    m_loginBtn = new Button(this);
     Init();
 }
 
@@ -16,5 +17,6 @@ MainWindow::~MainWindow() {
 void MainWindow::Init() {
     ui->userContainer->addWidget(m_user);
     ui->pwdContainer->addWidget(m_pwd);
+    ui->loginContainer->addWidget(m_loginBtn);
 }
 

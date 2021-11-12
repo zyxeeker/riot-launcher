@@ -1,8 +1,12 @@
 <RCC>
-    <qresource prefix="img">
-        <file>resource/_login.svg</file>
-        <file>resource/close.svg</file>
-        <file>resource/login.svg</file>
-        <file>resource/minimize.svg</file>
-    </qresource>
+  <qresource prefix="img">
+    <file>resource/logo.png</file>
+    <file>resource/_login.svg</file>
+    <file>resource/close.svg</file>
+    <file>resource/login.svg</file>
+    <file>resource/minimize.svg</file>
+  </qresource>
+  <qresource prefix="font">
+    <file>resource/font.otf</file>
+  </qresource>
 </RCC>
