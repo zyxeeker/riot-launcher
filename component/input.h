@@ -29,7 +29,6 @@ private:
 private:
     int m_bkRGB = 236;
     int m_borderRGB = 236;
-private:
     QLineEdit *m_lineEdit;
     QLabel *m_label;
     QPropertyAnimation *m_bk;

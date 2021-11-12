@@ -48,18 +48,17 @@ void Input::Init() {
 void Input::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.setRenderHint(QPainter::Antialiasing, true);
 
     QColor bkColor(m_bkRGB, m_bkRGB, m_bkRGB);
     QColor borderColor(m_borderRGB, m_borderRGB, m_borderRGB);
 
     painter.setPen(Qt::NoPen);
     painter.setBrush(QBrush(borderColor));
-    painter.drawRoundedRect(QRect(0, 0, 291, 50), 6, 6);
+    painter.drawRoundedRect(QRect(0, 0, 291, 50), 4, 4);
 
     painter.setPen(Qt::NoPen);
     painter.setBrush(QBrush(bkColor));
-    painter.drawRoundedRect(QRect(3, 3, 285, 44), 4, 4);
+    painter.drawRoundedRect(QRect(3, 3, 285, 44), 2, 2);
 }
 
 void Input::mousePressEvent(QMouseEvent *event) {
