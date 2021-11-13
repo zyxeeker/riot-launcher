@@ -61,8 +61,36 @@ void Input::paintEvent(QPaintEvent *event) {
     painter.drawRoundedRect(QRect(2, 2, 236, 36), 2, 2);
 }
 
+void Input::enterEvent(QEvent *event) {
+    if (!m_enabled){
+        m_bk->stop();
+        m_bkBorder->stop();
+        m_bk->setStartValue(m_bkRGB);
+        m_bk->setEndValue(231);
+        m_bkBorder->setStartValue(m_borderRGB);
+        m_bkBorder->setEndValue(231);
+        m_bk->start();
+        m_bkBorder->start();
+    }
+}
+
+void Input::leaveEvent(QEvent *event) {
+    if (!m_enabled){
+        m_bk->stop();
+        m_bkBorder->stop();
+        m_bk->setStartValue(m_bkRGB);
+        m_bk->setEndValue(237);
+        m_bkBorder->setStartValue(m_borderRGB);
+        m_bkBorder->setEndValue(237);
+        m_bk->start();
+        m_bkBorder->start();
+    }
+
+}
+
 void Input::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
+        m_enabled = true;
         m_lineEdit->setEnabled(true);
         m_lineEdit->setFocus();
         m_labelPos->setStartValue(m_label->geometry());

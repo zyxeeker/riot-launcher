@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QFontDatabase>
+#include "component/update.h"
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
@@ -8,10 +9,11 @@ int main(int argc, char *argv[]) {
     if(fontId>=0){
         auto f = QFontDatabase::applicationFontFamilies(fontId).at(0);
         QFont font(f);
-//        font.setStyleStrategy(QFont::PreferAntialias);
         a.setFont(font);
     }
-    MainWindow w;
-    w.show();
+//    MainWindow w;
+//    w.show();
+UpdateCtrl u;
+    u.show();
     return a.exec();
 }

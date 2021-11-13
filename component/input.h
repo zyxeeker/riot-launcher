@@ -19,6 +19,8 @@ public:
     Input(QWidget *parent);
 protected:
     void paintEvent(QPaintEvent *event) override;
+    void enterEvent(QEvent *event) override;
+    void leaveEvent(QEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
 private:
     void Init();
@@ -27,8 +29,9 @@ private:
     int borderRGB() const;
     void setBorderRGB(const int rgb);
 private:
-    int m_bkRGB = 236;
-    int m_borderRGB = 236;
+    bool m_enabled = false;
+    int m_bkRGB = 237;
+    int m_borderRGB = 237;
     QLineEdit *m_lineEdit;
     QLabel *m_label;
     QPropertyAnimation *m_bk;

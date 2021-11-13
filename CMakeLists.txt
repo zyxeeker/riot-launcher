@@ -19,7 +19,7 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        component/input.cpp component/input.h component/button.cpp component/button.h res.qrc)
+        component/input.cpp component/input.h component/button.cpp component/button.h res.qrc component/update.cpp component/update.h)
 
 add_executable(launcher ${PROJECT_SOURCES})
 

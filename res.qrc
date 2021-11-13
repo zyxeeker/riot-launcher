@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="img">
+    <file>resource/download.svg</file>
+    <file>resource/pause.svg</file>
     <file>resource/logo.png</file>
     <file>resource/_login.svg</file>
     <file>resource/close.svg</file>
