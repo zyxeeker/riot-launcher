@@ -2,7 +2,7 @@
 // Created by 19047 on 2021/11/13.
 //
 
-#ifndef LAUNCHER_UPDATE_H
+#ifndef LAUNCHER_UPDATE_PAGE_H
 #define LAUNCHER_UPDATE_H
 
 #include <QPushButton>
@@ -35,4 +35,4 @@ private:
 };
 
 
-#endif //LAUNCHER_UPDATE_H
+#endif //LAUNCHER_UPDATE_PAGE_H

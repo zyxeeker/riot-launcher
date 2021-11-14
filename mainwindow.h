@@ -2,8 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QHBoxLayout>
 #include "component/input.h"
 #include "component/button.h"
+#include "component/smooth_scroll_area.h"
+#include "page/update_page.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,5 +24,8 @@ private:
     Input *m_user;
     Input *m_pwd;
     Button *m_loginBtn;
+    SmoothScrollArea *m_area;
+    QHBoxLayout *m_updateL;
+    UpdatePage *m_updatePage;
 };
 #endif // MAINWINDOW_H
