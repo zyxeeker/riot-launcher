@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="img">
+    <file>resource/game.png</file>
     <file>resource/download.svg</file>
     <file>resource/pause.svg</file>
     <file>resource/_login.svg</file>

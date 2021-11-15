@@ -23,7 +23,7 @@ Q_OBJECT
 public:
     UpdatePage(QWidget *parent = nullptr);
 private:
-//    QWebEngineView *m_w;
+    QWebEngineView *m_w;
     QLabel *m_mask;
     QWidget *m_dock;
     QWidget *m_navDock;
