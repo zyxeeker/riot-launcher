@@ -19,7 +19,7 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        component/input.cpp component/input.h component/button.cpp component/button.h res.qrc component/update.cpp component/update.h component/smooth_scroll_area.h component/smooth_scroll_area.cpp page/update_page.cpp page/update_page.h)
+        component/input.cpp component/input.h component/button.cpp component/button.h res.qrc component/update.cpp component/update.h component/smooth_scroll_area.h component/smooth_scroll_area.cpp page/update_page.cpp page/update_page.h component/nav.cpp component/nav.h)
 
 add_executable(launcher ${PROJECT_SOURCES})
 

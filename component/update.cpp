@@ -10,28 +10,38 @@
 UpdateCtrl::UpdateCtrl(QWidget *parent) {
     m_title = new QLabel(this);
     m_st = new QLabel(this);
+    m_effect = new QGraphicsDropShadowEffect(this);
 
     this->setMaximumSize(155,50);
     this->setMinimumSize(155,50);
     this->setCursor(Qt::PointingHandCursor);
+
+    m_effect->setOffset(0, 0);
+    m_effect->setColor(QColor(26, 198, 227));
+    m_effect->setBlurRadius(20);
+    this->setGraphicsEffect(m_effect);
 
     m_download = QPixmap(":/img/resource/download.svg");
     m_pause = QPixmap(":/img/resource/pause.svg");
 
     m_title->setStyleSheet("color:white;");
     m_title->setGeometry(54,8,100,20);
-    m_title->setText(QString::fromUtf8("更新"));
+//    m_title->setText(QString::fromUtf8("更新"));
 
     QFont font;
     font.setPointSize(8);
     m_st->setStyleSheet("color:rgb(159, 213, 231);");
     m_st->setGeometry(54,28,100,12);
-    m_st->setText(QString::fromUtf8("暂停"));
+//    m_st->setText(QString::fromUtf8("暂停"));
     m_st->setFont(font);
 
     m_hover = new QPropertyAnimation(this, "scale");
     m_hover->setEasingCurve(QEasingCurve::OutExpo);
     m_hover->setDuration(800);
+
+    m_shadow = new QPropertyAnimation(this, "radius");
+    m_shadow->setEasingCurve(QEasingCurve::OutExpo);
+    m_shadow->setDuration(800);
 }
 
 void UpdateCtrl::paintEvent(QPaintEvent *event) {
@@ -70,16 +80,24 @@ void UpdateCtrl::paintEvent(QPaintEvent *event) {
 
 void UpdateCtrl::enterEvent(QEvent *event) {
     m_hover->stop();
+    m_shadow->stop();
     m_hover->setStartValue(m_scale);
     m_hover->setEndValue(1.02);
     m_hover->start();
+    m_shadow->setStartValue(m_radius);
+    m_shadow->setEndValue(50);
+    m_shadow->start();
 }
 
 void UpdateCtrl::leaveEvent(QEvent *event) {
     m_hover->stop();
+    m_shadow->stop();
     m_hover->setStartValue(m_scale);
     m_hover->setEndValue(1.0);
     m_hover->start();
+    m_shadow->setStartValue(m_radius);
+    m_shadow->setEndValue(20);
+    m_shadow->start();
 }
 
 double UpdateCtrl::scale() const {
@@ -89,4 +107,13 @@ double UpdateCtrl::scale() const {
 void UpdateCtrl::setScale(const double scale) {
     m_scale = scale;
     update();
+}
+
+int UpdateCtrl::radius() const {
+    return m_radius;
+}
+
+void UpdateCtrl::setRadius(const int radius) {
+    m_effect->setBlurRadius(m_radius);
+    m_radius = radius;
 }

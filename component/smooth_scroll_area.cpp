@@ -8,7 +8,11 @@ SmoothScrollArea::SmoothScrollArea(QWidget *parent) : QScrollArea(parent) {
     m_content = new QWidget;
     m_smoothMoveTimer = new QTimer(this);
     m_lastWheelEvent = nullptr;
-//    m_content->setStyleSheet("background:rgb(28,30,39);");
+    m_content->setObjectName("bk");
+    m_content->setStyleSheet("#bk{background:#232323;}");
+    this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+#if 0
     this->setObjectName("QScrollArea");
     this->setStyleSheet("QScrollArea {border:none;}"
                         "QScrollBar:vertical {border: none;background: rgb(23,23,23);width: 5px;margin: 0px 0 0px 0;}"
@@ -16,9 +20,10 @@ SmoothScrollArea::SmoothScrollArea(QWidget *parent) : QScrollArea(parent) {
                         "QScrollBar::add-line:vertical {border: none;background: rgb(0, 0, 0);height: 0px;subcontrol-position: bottom;subcontrol-origin: margin;}"
                         "QScrollBar::sub-line:vertical {border: none;background: rgb(0, 0, 0);height: 0px;subcontrol-position: top;subcontrol-origin: margin;}"
                         "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {background: none;width: 0px;height: 0px;}");
+#endif
     this->setWidgetResizable(true);
     this->setWidget(m_content);
-    connect(m_smoothMoveTimer, SIGNAL(timeout()), this, SLOT(SmoothMove()));
+    connect(m_smoothMoveTimer, &QTimer::timeout, this, &SmoothScrollArea::SmoothMove);
 
 }
 
