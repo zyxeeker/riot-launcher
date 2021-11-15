@@ -9,15 +9,21 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QtWebEngineWidgets/QWebEngineView>
+#include <QtMultimedia/QMediaPlayer>
+#include <QtMultimedia/QMediaPlaylist>
+#include <QtMultimediaWidgets/QVideoWidget>
+#include <QGraphicsView>
+#include <QGraphicsVideoItem>
+#include <QGraphicsProxyWidget>
 #include "component/update.h"
 #include "component/nav.h"
 
-class UpdatePage : public QWidget{
-    Q_OBJECT
+class UpdatePage : public QWidget {
+Q_OBJECT
 public:
     UpdatePage(QWidget *parent = nullptr);
 private:
-    QWebEngineView *m_w;
+//    QWebEngineView *m_w;
     QLabel *m_mask;
     QWidget *m_dock;
     QWidget *m_navDock;
@@ -31,6 +37,13 @@ private:
     UpdateCtrl *m_ctrl;
     Nav *m_n1;
     Nav *m_n2;
+
+//    QVideoWidget *m_v;
+    QMediaPlayer *m_player;
+    QMediaPlaylist *m_playerList;
+    QGraphicsScene *m_scene;
+    QGraphicsView *m_v;
+    QGraphicsVideoItem *m_video;
 };
 
 

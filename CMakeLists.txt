@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets WebEngineWidgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets WebEngineWidgets MultimediaWidgets REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -25,5 +25,6 @@ add_executable(launcher ${PROJECT_SOURCES})
 
 target_link_libraries(launcher PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(launcher PRIVATE Qt${QT_VERSION_MAJOR}::WebEngineWidgets)
+target_link_libraries(launcher PRIVATE Qt${QT_VERSION_MAJOR}::MultimediaWidgets)
 
 

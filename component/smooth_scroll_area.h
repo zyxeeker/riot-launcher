@@ -32,7 +32,7 @@ private slots:
     void SmoothMove();
 
 private:
-    int m_fps = 60;
+    int m_fps = 75;
     int m_duration = 400;
     int m_stepsTotal = 0;
     int m_acceleration = 1;
