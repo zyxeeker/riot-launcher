@@ -22,7 +22,7 @@ Nav::Nav(QWidget *parent):QPushButton(parent){
     this->setGraphicsEffect(m_effect);
 
 #if 1
-    m_key->setGeometry(10, 10, 1, 20);
+    m_key->setGeometry(14, 14, 1, 20);
     m_key->setText("  UPDATE  ");
     m_key->setStyleSheet("border-radius:6px;background:rgba(255,255,255,200);color:black;font-size:12px;");
     m_key->adjustSize();
@@ -68,13 +68,14 @@ QPixmap Nav::GeneratePixmap(const QPixmap &src) {
 void Nav::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
-
-    QPainterPath path;
-    path.addRoundedRect(QRectF(5, 5, 90, 90), 10, 10);
-    QPen pen(Qt::red, 5);
-    painter.setPen(pen);
-    painter.fillPath(path, Qt::transparent);
-    painter.drawPath(path);
+    if (m_isHover) {
+        QPainterPath path;
+        path.addRoundedRect(QRectF(5, 5, 90, 90), 10, 10);
+        QPen pen(QColor(198, 198, 198, 180), 5);
+        painter.setPen(pen);
+        painter.fillPath(path, Qt::transparent);
+        painter.drawPath(path);
+    }
 
     QLinearGradient linear(0, 0, 0, 100);
     linear.setColorAt(0, QColor(0, 0, 0, 0));
@@ -85,10 +86,11 @@ void Nav::paintEvent(QPaintEvent *event) {
     painter.drawPixmap(0, 0, PIX_SIZE, PIX_SIZE, m_pix);
 
     painter.setBrush(linear);
-    painter.drawRoundedRect(rect(), 14, 14);
+    painter.drawRoundedRect(QRect(12, 12, 50, 50), 14, 14);
 }
 
 void Nav::enterEvent(QEvent *event) {
+    m_isHover = true;
     m_shadow->stop();
     m_mask->stop();
     m_shadow->setStartValue(m_radius);
@@ -100,6 +102,7 @@ void Nav::enterEvent(QEvent *event) {
 }
 
 void Nav::leaveEvent(QEvent *event) {
+    m_isHover = false;
     m_shadow->stop();
     m_mask->stop();
     m_shadow->setStartValue(m_radius);

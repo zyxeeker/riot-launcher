@@ -28,6 +28,7 @@ private:
     void setAlpha(const int alpha);
     void setRadius(const int radius);
 private:
+    bool m_isHover = false;
     int m_radius = 20;
     int m_alpha = 180;
     QPixmap m_pix;
