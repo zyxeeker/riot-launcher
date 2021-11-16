@@ -1,12 +1,13 @@
 <RCC>
   <qresource prefix="img">
-    <file>resource/game.png</file>
-    <file>resource/download.svg</file>
-    <file>resource/pause.svg</file>
-    <file>resource/_login.svg</file>
-    <file>resource/close.svg</file>
-    <file>resource/login.svg</file>
-    <file>resource/minimize.svg</file>
+      <file>resource/bk_pause.svg</file>
+      <file>resource/bk_play.svg</file>
+      <file>resource/download.svg</file>
+      <file>resource/pause.svg</file>
+      <file>resource/_login.svg</file>
+      <file>resource/close.svg</file>
+      <file>resource/login.svg</file>
+      <file>resource/minimize.svg</file>
   </qresource>
   <qresource prefix="font">
     <file>resource/font.otf</file>

@@ -6,11 +6,10 @@
 	padding: 0px;
 }
 html,body{
-	background: url("https://pic2.zhimg.com/v2-40053470a4638e888ff842d3e5bc32da_1440w.jpg") no-repeat center 0;
-	/*background: transparent;*/
-	background-size: cover;
-	height: 100vh;
-	width: 100%;
+    /*background: url("https://pic2.zhimg.com/v2-40053470a4638e888ff842d3e5bc32da_1440w.jpg") no-repeat center 0;*/
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
 }
 video{  
 	height: 100vh;
@@ -20,41 +19,13 @@ video{
 	bottom: 0px;
 	opacity: 1;
 }
-img{
-	height: 100%;
-	width: 100%;
-}
-button {
-	-webkit-transition-duration: 0.4s;
-	transition-duration: 0.4s;
-	padding: 4px 5px;
-	text-align: center;
-	background-color: #0000007c;
-	color: black;
-	border: none;
-	border-radius: 5px;
-	position: absolute;
-	top: 50%;
-	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.397);
-}
- button:hover {
- 	background-color: #000000d2;
- 	color: white;
- }
-
 </style>
 <body>
-	<video id="bk" autoplay loop muted src="https://static.biligame.com/sssj/gw/pc/images/theme/kv.webm"></video>
-	<div>
-		<button id="ctrl" onclick="C()">
-			<svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" fill="white" fill-opacity="0.01"/><path d="M16 12V36" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 12V36" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-		</button>
-	</div>
+<!--	<video id="bk" autoplay loop muted src="https://www.w3school.com.cn/i/movie.webm"></video>-->
 </body>
 <script>
 	let flag = true;
 	let video = document.getElementById("bk");
-	let button = document.getElementById("ctrl");
 	let timer = null;
     let alpha = 100;
     let speed = 0;
@@ -70,7 +41,6 @@ button {
 				alpha += speed;
 				video.style.opacity = alpha/100;
 			},30);
-			button.innerHTML = '<svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" fill="white" fill-opacity="0.01"/><path d="M15 24V11.8756L25.5 17.9378L36 24L25.5 30.0622L15 36.1244V24Z" fill="#ffffff" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/></svg>';
 			flag = false;
 		}else{
 			speed = 10;
@@ -81,7 +51,6 @@ button {
 				video.style.opacity = alpha/100;
 			},30);
 			video.play();
-			button.innerHTML = '<svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" fill="white" fill-opacity="0.01"/><path d="M16 12V36" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 12V36" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 			flag = true;
 		}
 	}

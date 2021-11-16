@@ -6,28 +6,28 @@
 #include <QPainterPath>
 #include "nav.h"
 
-#define PIX_SIZE 100
+#define PIX_SIZE 86
 
 Nav::Nav(QWidget *parent):QPushButton(parent){
     m_title = new QLabel(this);
     m_key = new QLabel(this);
     m_effect = new QGraphicsDropShadowEffect(this);
 
-    this->setMinimumSize(100,100);
-    this->setMaximumSize(100,100);
+    this->setMinimumSize(100, 100);
+    this->setMaximumSize(100, 100);
 
     m_effect->setOffset(0, 0);
     m_effect->setColor(Qt::black);
     m_effect->setBlurRadius(m_radius);
     this->setGraphicsEffect(m_effect);
 
-#if 0
-    m_key->setGeometry(5,5,1,20);
+#if 1
+    m_key->setGeometry(10, 10, 1, 20);
     m_key->setText("  UPDATE  ");
-    m_key->setStyleSheet("border-radius:10px;background:rgb(0,255,255);color:white;");
+    m_key->setStyleSheet("border-radius:6px;background:rgba(255,255,255,200);color:black;font-size:12px;");
     m_key->adjustSize();
 
-    m_title->setGeometry(5,50,100,20);
+    m_title->setGeometry(10, 50, 100, 20);
     m_title->setText("TITLE TITLE TITLE TITLE TITLE ");
     m_title->setStyleSheet("color:white;");
     m_title->adjustSize();
@@ -58,7 +58,7 @@ QPixmap Nav::GeneratePixmap(const QPixmap &src) {
     painter.setRenderHints(QPainter::SmoothPixmapTransform, true);
     // 裁剪
     QPainterPath path;
-    path.addRoundedRect(QRectF(0,0,100,100),16,16);
+    path.addRoundedRect(QRectF(0, 0, PIX_SIZE, PIX_SIZE), 16, 16);
     painter.setClipPath(path);
     painter.drawPixmap(0, 0, PIX_SIZE, PIX_SIZE, pixmap);
 
@@ -69,9 +69,16 @@ void Nav::paintEvent(QPaintEvent *event) {
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true);
 
-    QLinearGradient linear(0,0,0,100);
-    linear.setColorAt(0,QColor(0,0,0,0));
-    linear.setColorAt(1,QColor(0,0,0,m_alpha));
+    QPainterPath path;
+    path.addRoundedRect(QRectF(5, 5, 90, 90), 10, 10);
+    QPen pen(Qt::red, 5);
+    painter.setPen(pen);
+    painter.fillPath(path, Qt::transparent);
+    painter.drawPath(path);
+
+    QLinearGradient linear(0, 0, 0, 100);
+    linear.setColorAt(0, QColor(0, 0, 0, 0));
+    linear.setColorAt(1, QColor(0, 0, 0, m_alpha));
     linear.setSpread(QGradient::PadSpread);
 
     painter.setPen(Qt::NoPen);
