@@ -27,6 +27,15 @@ void MainWindow::Init() {
     m_updateL->addWidget(m_updatePage);
     m_area->SetContentLayout(m_updateL);
 
+    auto *pAnimation = new QPropertyAnimation(m_area, "geometry");
+    pAnimation->setEasingCurve(QEasingCurve::InBack);
+    connect(ui->mini_button, &QPushButton::clicked, this, [=]() {
+        pAnimation->setStartValue(m_area->geometry());
+        pAnimation->setEndValue(QRect(0, 720, 0, 0));
+        pAnimation->setDuration(500);
+        pAnimation->start(QAbstractAnimation::DeleteWhenStopped);
+    });
+
     connect(m_user, &Input::Clicked, this, [=]() {
         m_pwd->Rest();
     });

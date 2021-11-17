@@ -15,6 +15,7 @@ UpdateCtrl::UpdateCtrl(QWidget *parent) {
     this->setMaximumSize(155,50);
     this->setMinimumSize(155,50);
     this->setCursor(Qt::PointingHandCursor);
+    this->setCheckable(true);
 
     m_effect->setOffset(0, 0);
     m_effect->setColor(QColor(26, 198, 227));
@@ -51,30 +52,35 @@ void UpdateCtrl::paintEvent(QPaintEvent *event) {
     QColor circleColor(18, 53, 59);
     QColor updateColor(11, 196, 226);
 
-    QLinearGradient linear(0,0,155,50);
-    linear.setColorAt(0,QColor(68, 158, 203));
-    linear.setColorAt(1,QColor(26, 198, 227));
-    linear.setSpread(QGradient::PadSpread);
-
-    painter.setPen(Qt::NoPen);
-    painter.setBrush(linear);
-    painter.drawRoundedRect(QRect(0, 0, 155, 50), 14, 14);
+    if (!isChecked()) {
+        QLinearGradient linear(0, 0, 155, 50);
+        linear.setColorAt(0, QColor(68, 158, 203));
+        linear.setColorAt(1, QColor(26, 198, 227));
+        linear.setSpread(QGradient::PadSpread);
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(linear);
+        painter.drawRoundedRect(QRect(0, 0, 155, 50), 14, 14);
+    } else {
+        painter.setPen(Qt::NoPen);
+        painter.setBrush(circleColor);
+        painter.drawRoundedRect(QRect(0, 0, 155, 50), 14, 14);
+    }
 
     painter.setBrush(Qt::black);
-    painter.scale(m_scale,m_scale);
-    painter.drawRoundedRect(QRect(8, 8, 34, 34),17, 17);
+    painter.scale(m_scale, m_scale);
+    painter.drawRoundedRect(QRect(8, 8, 34, 34), 17, 17);
 
     painter.setBrush(circleColor);
-    painter.drawRoundedRect(QRect(10, 10, 30, 30),15, 15);
+    painter.drawRoundedRect(QRect(10, 10, 30, 30), 15, 15);
 
     painter.setBrush(updateColor);
-    painter.drawPie(QRect(10,10,30,30),90*16,-120*16);
+    painter.drawPie(QRect(10, 10, 30, 30), 90 * 16, -120 * 16);
 
     painter.setBrush(Qt::black);
     painter.drawRoundedRect(QRect(13, 13, 24, 24),12, 12);
     painter.scale(1.0,1.0);
 
-    painter.drawPixmap(17, 17, m_download);
+    isChecked() ? painter.drawPixmap(17, 17, m_pause) : painter.drawPixmap(17, 17, m_download);
 
 }
 
