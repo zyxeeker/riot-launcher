@@ -37,6 +37,8 @@ private:
     QPropertyAnimation *m_shadow;
     QPropertyAnimation *m_mask;
     QGraphicsDropShadowEffect *m_effect;
+signals:
+    void mousePos(bool);
 };
 
 

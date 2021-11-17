@@ -9,6 +9,7 @@ UpdatePage::UpdatePage(QWidget *parent) : QWidget(parent) {
     m_mask = new QLabel(this);
     m_dock = new QWidget(this);
     m_logo = new QLabel(this);
+    m_dockBk = new bk(m_dock);
 
     m_c = new QWidget(this);
     m_dLayout = new QHBoxLayout(m_dock);
@@ -30,6 +31,8 @@ UpdatePage::UpdatePage(QWidget *parent) : QWidget(parent) {
     connect(m_play, &QPushButton::clicked, this, [=]() {
         m_w->page()->runJavaScript("C()");
     });
+    connect(m_n1, &Nav::mousePos, m_dockBk, &bk::Change);
+    connect(m_n2, &Nav::mousePos, m_dockBk, &bk::Change);
 
     m_logo->setMinimumSize(140, 60);
     m_logo->setMaximumSize(140, 60);
@@ -39,19 +42,19 @@ UpdatePage::UpdatePage(QWidget *parent) : QWidget(parent) {
     this->setMaximumSize(1280, 720 * 2);
     this->setMinimumSize(1280, 720 * 2);
 
-#if 1
     m_w->load(QString("file:///D:/program/un/riot-launcher/index.html"));
 //    m_w->setUrl(QString("https://lol.secure.dyn.riotcdn.net/channels/public/rccontent/theme/product-details-background.webm"));
     m_w->setGeometry(0, 0, 1280, 720);
     m_w->page()->setBackgroundColor(QColor(35, 35, 35));
     m_mask->setGeometry(0, 0, 1280, 720);
-#endif
+
     m_bar->setGeometry(0, 0, 1280, 70);
     m_bar->setStyleSheet("background:transparent;");
 
     m_dock->setObjectName("dock");
     m_dock->setGeometry(0, 625, 1280, 95);
     m_dock->setStyleSheet("#dock{background:rgba(32, 28, 29, 220);}");
+    m_dockBk->setGeometry(500, 0, 780, 95);
 
     m_dLayout->addWidget(m_ctrl);
     m_dLayout->addItem(hSpacer);
@@ -59,6 +62,7 @@ UpdatePage::UpdatePage(QWidget *parent) : QWidget(parent) {
 
     m_nLayout->addWidget(m_n1);
     m_nLayout->addWidget(m_n2);
-    m_navDock->setGeometry(750, 545, 300, 200);
+    m_nLayout->setContentsMargins(0, 0, 0, 0);
+    m_navDock->setGeometry(750, 545, 200, 200);
 
 }

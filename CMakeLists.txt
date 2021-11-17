@@ -25,7 +25,7 @@ set(PROJECT_SOURCES
         component/smooth_scroll_area.h component/smooth_scroll_area.cpp
         component/nav.cpp component/nav.h
         page/update_page.cpp page/update_page.h
-        component/play_button.cpp component/play_button.h)
+        component/play_button.cpp component/play_button.h component/bk.cpp component/bk.h)
 
 add_executable(launcher ${PROJECT_SOURCES} res.qrc)
 

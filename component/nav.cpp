@@ -6,7 +6,7 @@
 #include <QPainterPath>
 #include "nav.h"
 
-#define PIX_SIZE 86
+#define PIX_SIZE 73
 
 Nav::Nav(QWidget *parent):QPushButton(parent){
     m_title = new QLabel(this);
@@ -15,6 +15,7 @@ Nav::Nav(QWidget *parent):QPushButton(parent){
 
     this->setMinimumSize(100, 100);
     this->setMaximumSize(100, 100);
+    this->setCursor(Qt::PointingHandCursor);
 
     m_effect->setOffset(0, 0);
     m_effect->setColor(Qt::black);
@@ -58,7 +59,7 @@ QPixmap Nav::GeneratePixmap(const QPixmap &src) {
     painter.setRenderHints(QPainter::SmoothPixmapTransform, true);
     // 裁剪
     QPainterPath path;
-    path.addRoundedRect(QRectF(0, 0, PIX_SIZE, PIX_SIZE), 16, 16);
+    path.addRoundedRect(QRectF(0, 0, PIX_SIZE, PIX_SIZE), 8, 8);
     painter.setClipPath(path);
     painter.drawPixmap(0, 0, PIX_SIZE, PIX_SIZE, pixmap);
 
@@ -83,13 +84,14 @@ void Nav::paintEvent(QPaintEvent *event) {
     linear.setSpread(QGradient::PadSpread);
 
     painter.setPen(Qt::NoPen);
-    painter.drawPixmap(0, 0, PIX_SIZE, PIX_SIZE, m_pix);
+    painter.drawPixmap(14, 14, PIX_SIZE, PIX_SIZE, m_pix);
 
     painter.setBrush(linear);
     painter.drawRoundedRect(QRect(12, 12, 50, 50), 14, 14);
 }
 
 void Nav::enterEvent(QEvent *event) {
+    emit mousePos(true);
     m_isHover = true;
     m_shadow->stop();
     m_mask->stop();
@@ -102,6 +104,7 @@ void Nav::enterEvent(QEvent *event) {
 }
 
 void Nav::leaveEvent(QEvent *event) {
+    emit mousePos(false);
     m_isHover = false;
     m_shadow->stop();
     m_mask->stop();

@@ -13,6 +13,7 @@
 #include "component/update.h"
 #include "component/nav.h"
 #include "component/play_button.h"
+#include "component/bk.h"
 
 class UpdatePage : public QWidget {
 Q_OBJECT
@@ -34,6 +35,7 @@ private:
     Nav *m_n1;
     Nav *m_n2;
     PlayButton *m_play;
+    bk *m_dockBk;
 };
 
 
