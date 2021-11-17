@@ -17,6 +17,7 @@ Q_OBJECT
     Q_PROPERTY(int borderRGB READ borderRGB WRITE setBorderRGB);
 public:
     Input(QWidget *parent);
+    void Rest();
 protected:
     void paintEvent(QPaintEvent *event) override;
     void enterEvent(QEvent *event) override;
@@ -37,6 +38,8 @@ private:
     QPropertyAnimation *m_bk;
     QPropertyAnimation *m_bkBorder;
     QPropertyAnimation *m_labelPos;
+signals:
+    void Clicked();
 };
 
 

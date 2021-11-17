@@ -41,8 +41,30 @@ void Input::Init() {
     m_bkBorder->setDuration(220);
 
     m_labelPos = new QPropertyAnimation(m_label, "geometry");
-    m_labelPos->setEasingCurve(QEasingCurve::OutExpo);
-    m_labelPos->setDuration(180);
+    m_labelPos->setDuration(130);
+}
+
+void Input::Rest() {
+    m_enabled = false;
+    m_bk->stop();
+    m_bk->setStartValue(m_bkRGB);
+    m_bk->setEndValue(237);
+    m_bk->start();
+
+    m_bkBorder->stop();
+    m_bkBorder->setStartValue(m_borderRGB);
+    m_bkBorder->setEndValue(237);
+    m_bkBorder->start();
+
+    if (m_lineEdit->text().isEmpty()) {
+        m_labelPos->stop();
+        m_labelPos->setEasingCurve(QEasingCurve::InSine);
+        m_labelPos->setStartValue(m_label->geometry());
+        m_labelPos->setEndValue(QRect(11, 15, 100, 10));
+        m_labelPos->start();
+    }
+    m_lineEdit->setEnabled(false);
+
 }
 
 void Input::paintEvent(QPaintEvent *event) {
@@ -85,14 +107,15 @@ void Input::leaveEvent(QEvent *event) {
         m_bk->start();
         m_bkBorder->start();
     }
-
 }
 
 void Input::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
+        emit Clicked();
         m_enabled = true;
         m_lineEdit->setEnabled(true);
         m_lineEdit->setFocus();
+        m_labelPos->setEasingCurve(QEasingCurve::OutSine);
         m_labelPos->setStartValue(m_label->geometry());
         m_labelPos->setEndValue(QRect(7, 5, 100, 10));
         m_bk->setStartValue(m_bkRGB);

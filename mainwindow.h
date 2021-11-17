@@ -17,6 +17,8 @@ Q_OBJECT
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+protected:
+    void mousePressEvent(QMouseEvent *event);
 private:
     void Init();
 private:
