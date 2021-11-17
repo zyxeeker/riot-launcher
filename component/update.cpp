@@ -18,7 +18,7 @@ UpdateCtrl::UpdateCtrl(QWidget *parent) {
     this->setCheckable(true);
 
     m_effect->setOffset(0, 0);
-    m_effect->setColor(QColor(26, 198, 227));
+    m_effect->setColor(QColor(26, 198, 227, 0));
     m_effect->setBlurRadius(20);
     this->setGraphicsEffect(m_effect);
 
@@ -52,19 +52,21 @@ void UpdateCtrl::paintEvent(QPaintEvent *event) {
     QColor circleColor(18, 53, 59);
     QColor updateColor(11, 196, 226);
 
+    QLinearGradient linear(0, 0, 155, 50);
     if (!isChecked()) {
-        QLinearGradient linear(0, 0, 155, 50);
         linear.setColorAt(0, QColor(68, 158, 203));
         linear.setColorAt(1, QColor(26, 198, 227));
         linear.setSpread(QGradient::PadSpread);
-        painter.setPen(Qt::NoPen);
-        painter.setBrush(linear);
-        painter.drawRoundedRect(QRect(0, 0, 155, 50), 14, 14);
+        m_effect->setColor(QColor(26, 198, 227));
     } else {
-        painter.setPen(Qt::NoPen);
-        painter.setBrush(circleColor);
-        painter.drawRoundedRect(QRect(0, 0, 155, 50), 14, 14);
+        linear.setColorAt(0, QColor(28, 93, 100));
+        linear.setColorAt(1, QColor(32, 67, 72));
+        linear.setSpread(QGradient::PadSpread);
+        m_effect->setColor(QColor(26, 198, 227, 0));
     }
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(linear);
+    painter.drawRoundedRect(QRect(0, 0, 155, 50), 14, 14);
 
     painter.setBrush(Qt::black);
     painter.scale(m_scale, m_scale);
